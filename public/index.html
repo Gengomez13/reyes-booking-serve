@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyes Collaborative Counseling - Professional Therapy & Counseling Services in Houston</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            color: #333;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            flex: 0;
+            min-width: auto;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .logo a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #0D7A9E;
+            text-decoration: none;
+        }
+        
+        .logo a:hover {
+            opacity: 0.8;
+        }
+        
+        .header-contact {
+            color: #333;
+            font-size: 0.95rem;
+        }
+        
+        .header-contact a {
+            color: #0D7A9E;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .header-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0D7A9E 0%, #1e4d63 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background: #ee5a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Tagline */
+        .hero-tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 1.5rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #fff9e6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5f7f;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #2c5f7f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .pricing-title {
+            color: #0D7A9E;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            justify-items: center;
+            justify-content: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 900px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+        }
+
+        .pricing-card {
+            background: #f8f9fa;
+            border: 2px solid #0D7A9E;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 320px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(13, 122, 158, 0.15);
+        }
+
+        .pricing-card h3 {
+            color: #0D7A9E;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .credential {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .pricing-card .price {
+            font-size: 2.2rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .pricing-card .duration {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: linear-gradient(135deg, #0D7A9E 0%, #0a5a7a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-card-content {
+            padding: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card .contact-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .service-card .contact-btn:hover {
+            background: #ff5252;
+        }
+
+        @media (max-width: 768px) {
+            .services-section h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Treatment Conditions Section */
+        .treatment-conditions {
+            background: white;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .treatment-conditions h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #0D7A9E;
+            margin-bottom: 3rem;
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .conditions-column h3 {
+            color: #0D7A9E;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .conditions-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .conditions-column li {
+            color: #333;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .conditions-column li strong {
+            color: #0D7A9E;
+        }
+
+        @media (max-width: 1024px) {
+            .conditions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .conditions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .treatment-conditions h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Contact Info Box */
+        .contact-info-box {
+            background: #0D7A9E;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .contact-info-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-box p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .contact-info-box a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .about h2 {
+            color: #2c5f7f;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 2;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .booking-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .booking h2 {
+            color: #2c5f7f;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c5f7f;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2c5f7f;
+            box-shadow: 0 0 5px rgba(44, 95, 127, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background: #ee5a5a;
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c5f7f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsive Booking Calendar Grid */
+        @media (max-width: 1024px) {
+            div[style*="grid-template-columns: 2fr 1fr"] {
+                display: grid !important;
+                grid-template-columns: 1.5fr 1fr !important;
+                gap: 30px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            div[style*="grid-template-columns: 2fr 1fr"] {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+        }
+
+        /* FullCalendar Highlighting - Date Selection */
+        .fc-daygrid-day.selected-date {
+            background-color: #0D7A9E !important;
+            color: white !important;
+        }
+
+        .fc-daygrid-day.selected-date .fc-daygrid-day-text {
+            background-color: transparent !important;
+            color: white !important;
+            font-weight: bold !important;
+        }
+
+        .fc-daygrid-day.selected-date .fc-daygrid-day-frame {
+            background-color: #0D7A9E !important;
+        }
+
+        /* Make calendar dates larger and more visible */
+        .fc-col-header-cell {
+            padding: 12px 2px !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+        }
+
+        .fc-daygrid-day-number {
+            padding: 10px 4px !important;
+            font-size: 16px !important;
+        }
+
+        .fc-daygrid-day {
+            height: 120px !important;
+        }
+
+        /* FullCalendar Styles */
+    </style>
+    <!-- FullCalendar Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="https://reyescollaborativecounseling.com/" target="_blank">
+                    <img src="/logo.png" alt="Reyes Collaborative Counseling Logo">
+                </a>
+            </div>
+            <div class="header-contact">
+                📞 <a href="tel:+18322422948">(832) 242-2948</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Your Path to Healing and Growth Starts Here</h1>
+        <p class="hero-tagline">"No one should have to figure it out alone."</p>
+        <p>At Reyes Collaborative Counseling, we believe in working hand in hand with you and your family. Our therapists work <strong>with</strong> you, not just <strong>for</strong> you—tailoring every session to your unique goals, strengths, and needs. We meet clients where they are—emotionally, mentally, and spiritually—empowering them to build resilience, develop healthy coping strategies, and move forward on their path to healing.</p>
+        <button class="cta-button" onclick="document.getElementById('schedule-session').scrollIntoView({behavior: 'smooth'})">Take the First Step</button>
+    </section>
+
+    <!-- Services We Provide Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Services We Provide</h2>
+            
+            <!-- First Grid: 3 Column Layout -->
+            <div class="services-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 1200px;">
+                <!-- Adult Counseling -->
+                <div class="service-card">
+                    <img src="/adult-counseling.png" alt="Adult Counseling">
+                    <div class="service-card-content">
+                        <h3>Adult Counseling</h3>
+                        <p>Our adult counseling services address various emotional and mental health challenges. We specialize in therapy for anxiety, depression, trauma, stress management, life transitions, and relationship issues. Using evidence-based approaches, we work with adults in the workplace to personal relationships, helping you build resilience and achieve emotional well-being.</p>
+                        <a href="#schedule-session" class="contact-btn">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- Child Counseling -->
+                <div class="service-card">
+                    <img src="/child-counseling.png" alt="Child Counseling">
+                    <div class="service-card-content">
+                        <h3>Child Counseling</h3>
+                        <p>Our child counseling services provide comprehensive support for children ages 3-12 who face emotional, behavioral, or adjustment challenges. We help children manage anxiety, depression, behavioral issues, adjustment to changes, and social difficulties. Our child psychologists use play therapy and other age-appropriate techniques to help children understand and successfully navigate their emotions and experiences.</p>
+                        <a href="#schedule-session" class="contact-btn">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- Teen Counseling -->
+                <div class="service-card">
+                    <img src="/teen-counseling.png" alt="Teen Counseling">
+                    <div class="service-card-content">
+                        <h3>Teen Counseling</h3>
+                        <p>Our teen counseling services are specifically designed for adolescents ages 13-18. We address depression, anxiety, self-esteem issues, peer pressure, identity development, family conflicts, academic stress, substance use issues, and school-related challenges. Our specialized therapists help teens develop healthy coping skills and strategies for managing the unique demands and pressures of adolescence.</p>
+                        <a href="#schedule-session" class="contact-btn">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Grid: 2 Column Layout -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto 3rem; justify-items: center;">
+                <!-- EMDR Therapy -->
+                <div class="service-card">
+                    <img src="/emdr-therapy.png" alt="EMDR Therapy">
+                    <div class="service-card-content">
+                        <h3>EMDR Therapy</h3>
+                        <p>EMDR (Eye Movement Desensitization and Reprocessing) is an evidence-based therapeutic approach for trauma and PTSD. Through bilateral stimulation and eye movements, EMDR helps process traumatic memories, reduce emotional distress, and facilitate healing. This specialized therapy has been proven highly effective for treating trauma, anxiety disorders, depression, and other conditions related to distressing life experiences.</p>
+                        <a href="#schedule-session" class="contact-btn">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- Couples Counseling -->
+                <div class="service-card">
+                    <img src="/couples-counseling.png" alt="Couples Counseling">
+                    <div class="service-card-content">
+                        <h3>Couples Counseling</h3>
+                        <p>Our couples counseling services support relationships by addressing communication challenges, conflict resolution, intimacy issues, infidelity, life transitions, and relationship maintenance. We help couples strengthen their connection, improve understanding, develop healthy communication patterns, and create a more fulfilling relationship through evidence-based therapeutic interventions.</p>
+                        <a href="#schedule-session" class="contact-btn">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Conditions Section -->
+    <section class="treatment-conditions">
+        <div class="container">
+            <h2>We Offer Treatment for the Following Conditions:</h2>
+            <div class="conditions-grid">
+                <!-- Column 1 -->
+                <div class="conditions-column">
+                    <h3>Mental Health Conditions</h3>
+                    <ul>
+                        <li><strong>Anxiety & Panic Disorders</strong> (generalized anxiety, panic attacks, phobias)</li>
+                        <li><strong>Depression & Mood Challenges</strong></li>
+                        <li><strong>Trauma & Post-Traumatic Stress (PTSD)</strong></li>
+                        <li><strong>Grief, Loss & Bereavement</strong></li>
+                        <li><strong>Stress from School & Academics</strong> (for children, teens, young adults)</li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="conditions-column">
+                    <h3>Behavioral & Emotional Issues</h3>
+                    <ul>
+                        <li><strong>Low Self-Esteem & Self-Confidence</strong></li>
+                        <li><strong>Emotional Regulation & Coping Skills</strong></li>
+                        <li><strong>Behavioral & Oppositional Challenges</strong> (e.g. in children or adolescents)</li>
+                        <li><strong>Family Conflict & Interpersonal Strain</strong></li>
+                        <li><strong>Peer & Relationship Difficulties</strong></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="conditions-column">
+                    <h3>Life Transitions & Relationships</h3>
+                    <ul>
+                        <li><strong>Life Transitions & Adjustment Issues</strong> (e.g. divorce, move, career change)</li>
+                        <li><strong>Parenting Stress & Family Dynamics</strong> (including parent-child conflict)</li>
+                        <li><strong>Identity & LGBTQ+ Affirming Support</strong></li>
+                        <li><strong>School or Workplace Performance Pressure</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About Reyes Collaborative Counseling</h2>
+            <div class="about-content">
+                <p>We are a dedicated team of licensed mental health professionals committed to providing compassionate, personalized therapy for children, teens, and adults in Houston, Texas.</p>
+                <p><strong>Our Approach:</strong> We believe in working hand in hand with our clients and their families through a warm, team-based approach. We help you feel heard, supported, and empowered.</p>
+                <p><strong>Our Specialties:</strong> We work with a wide range of emotional, behavioral, and psychological challenges including anxiety, depression, trauma, stress-related disorders, substance use, emotional regulation, personality disorders, OCD, and relationship difficulties.</p>
+                <p style="margin-top: 1.5rem; font-size: 1.1rem; color: #0D7A9E; font-weight: bold;"><em>"We strive to meet each client where they are—emotionally, mentally, and spiritually—empowering them to build resilience and move forward on their path to healing."</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="pricing-title">Meet Our Therapists</h2>
+            <p class="pricing-subtitle">We believe everyone deserves access to quality mental health care. All sessions are 45 minutes long and can be conducted in-person or virtually. Meet our dedicated team of compassionate professionals.</p>
+            
+            <div style="background: #e8f4f8; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <h4 style="color: #0D7A9E; margin-bottom: 1rem;">📌 What Do These Credentials Mean?</h4>
+                <p style="color: #666; margin-bottom: 0.5rem;"><strong>LPC (Licensed Professional Counselor):</strong> Fully licensed therapist with years of experience and advanced credentials.</p>
+                <p style="color: #666; margin-bottom: 0.5rem;"><strong>LCSW (Licensed Clinical Social Worker):</strong> Licensed therapist with specialized social work training and credentials.</p>
+                <p style="color: #666;"><strong>LPC-Associate:</strong> Therapist working toward their full LPC license, supervised by an experienced LPC-Supervisor. Highly trained and effective!</p>
+            </div>
+
+            <!-- Individual Therapy Section -->
+            <h3 style="color: #0D7A9E; text-align: center; margin-top: 3rem; margin-bottom: 2rem; font-size: 1.5rem;">💼 Individual Therapy</h3>
+            
+            <!-- First Grid: 3 Column Layout -->
+            <div class="pricing-grid">
+                <!-- Daymar Blanco-Gracia -->
+                <div class="pricing-card" style="border-color: #ff6b6b; background: #fff5f5; text-align: center;">
+                    <img src="/daymar-blanco.png" alt="Daymar Blanco-Gracia" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">Daymar Blanco-Gracia</h3>
+                    <div style="font-size: 1rem; color: #0D7A9E; margin-bottom: 1rem; font-weight: bold;">Licensed Professional Counselor (LPC)</div>
+                    <div class="price">$150</div>
+                    <div class="duration">per 45-minute session</div>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">Fully licensed with extensive experience</p>
+                </div>
+
+                <!-- Geraldine Blanco -->
+                <div class="pricing-card" style="border-color: #4ecdc4; background: #f0fffe; text-align: center;">
+                    <img src="/geraldine-blanco.png" alt="Geraldine Blanco" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: #4ecdc4; margin-bottom: 0.5rem;">Geraldine Blanco</h3>
+                    <div style="font-size: 1rem; color: #0D7A9E; margin-bottom: 1rem; font-weight: bold;">Licensed Clinical Social Worker (LCSW)</div>
+                    <div class="price">$125</div>
+                    <div class="duration">per 45-minute session</div>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">Licensed with social work specialization</p>
+                </div>
+
+                <!-- Grace Nguyen -->
+                <div class="pricing-card" style="border-color: #95e1d3; background: #f5fffe; text-align: center;">
+                    <img src="/grace-nguyen.png" alt="Grace Nguyen" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: #0D7A9E; margin-bottom: 0.5rem;">Grace Nguyen</h3>
+                    <div style="font-size: 1rem; color: #666; margin-bottom: 1rem; font-weight: bold;">LPC-Associate</div>
+                    <div style="font-size: 0.9rem; color: #999; margin-bottom: 1rem;">Supervised by Shelley Zavodny Abeles, LPC-S</div>
+                    <div class="price">$110</div>
+                    <div class="duration">per 45-minute session</div>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">Highly trained, working toward full LPC license</p>
+                </div>
+            </div>
+
+            <!-- Second Grid: 2 Column Layout -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto 3rem; justify-items: center;">
+                <!-- Samantha Wong -->
+                <div class="pricing-card" style="border-color: #95e1d3; background: #f5fffe; text-align: center;">
+                    <img src="/samantha-wong.png" alt="Samantha Wong" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: #0D7A9E; margin-bottom: 0.5rem;">Samantha Wong</h3>
+                    <div style="font-size: 1rem; color: #666; margin-bottom: 1rem; font-weight: bold;">LPC-Associate</div>
+                    <div style="font-size: 0.9rem; color: #999; margin-bottom: 1rem;">Supervised by Lacee Lovely, LPC-S</div>
+                    <div class="price">$110</div>
+                    <div class="duration">per 45-minute session</div>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">Highly trained, working toward full LPC license</p>
+                </div>
+
+                <!-- Vanessa Turcios -->
+                <div class="pricing-card" style="border-color: #95e1d3; background: #f5fffe; text-align: center;">
+                    <img src="/vanessa-turcios.png" alt="Vanessa Turcios" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: #0D7A9E; margin-bottom: 0.5rem;">Vanessa Turcios</h3>
+                    <div style="font-size: 1rem; color: #666; margin-bottom: 1rem; font-weight: bold;">LPC-Associate</div>
+                    <div style="font-size: 0.9rem; color: #999; margin-bottom: 1rem;">Supervised by Angelica Tello, LPC-S</div>
+                    <div class="price">$100</div>
+                    <div class="duration">per 45-minute session</div>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">Highly trained, working toward full LPC license</p>
+                </div>
+            </div>
+
+            <!-- Couples Therapy Section -->
+            <h3 style="color: #0D7A9E; text-align: center; margin-top: 3rem; margin-bottom: 2rem; font-size: 1.5rem;">💑 Couples Therapy</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto 3rem; justify-items: center;">
+                <!-- Samantha Wong - Couples -->
+                <div class="pricing-card" style="border-color: #95e1d3; background: #f5fffe; text-align: center;">
+                    <img src="/samantha-wong.png" alt="Samantha Wong" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: #0D7A9E; margin-bottom: 0.5rem;">Samantha Wong</h3>
+                    <div style="font-size: 1rem; color: #666; margin-bottom: 1rem; font-weight: bold;">LPC-Associate - Couples Specialist</div>
+                    <div class="price">$110-$125</div>
+                    <div class="duration">per 53-minute session</div>
+                </div>
+
+                <!-- Vanessa Turcios - Couples -->
+                <div class="pricing-card" style="border-color: #95e1d3; background: #f5fffe; text-align: center;">
+                    <img src="/vanessa-turcios.png" alt="Vanessa Turcios" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: #0D7A9E; margin-bottom: 0.5rem;">Vanessa Turcios</h3>
+                    <div style="font-size: 1rem; color: #666; margin-bottom: 1rem; font-weight: bold;">LPC-Associate - Couples Specialist</div>
+                    <div class="price">$110-$125</div>
+                    <div class="duration">per 53-minute session</div>
+                </div>
+            </div>
+
+            <!-- Sliding Scale Section -->
+            <h3 style="color: #0D7A9E; text-align: center; margin-top: 3rem; margin-bottom: 2rem; font-size: 1.5rem;">💚 Sliding Scale Counseling</h3>
+            <div style="background: #e8f4f8; padding: 2rem; border-radius: 10px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+                <p style="color: #666; font-size: 1.1rem; margin-bottom: 1rem;">We are committed to increasing access to mental health services within our community.</p>
+                <p style="color: #0D7A9E; font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem;">Reduced-Fee Counseling Program</p>
+                <p style="color: #666; margin-bottom: 1rem;">We offer lower-cost therapy options for clients experiencing financial barriers to care.</p>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="color: #0D7A9E; font-weight: bold; font-size: 1.1rem; margin-bottom: 0.5rem;">$20-60 per 45-minute session</p>
+                    <p style="color: #666; font-size: 0.95rem;">Virtual sessions only • Availability may be limited</p>
+                </div>
+                <p style="color: #666; font-size: 0.95rem;">These services provide an affordable option for individuals seeking support while maintaining the same compassionate, professional, and collaborative care that is central to our practice.</p>
+                <p style="color: #999; font-style: italic; margin-top: 1rem;">To learn more about sliding scale availability, <a href="tel:+18322422948" style="color: #0D7A9E; text-decoration: none;">call us at (832) 242-2948</a> or use the inquiry form below.</p>
+            </div>
+
+            <div class="contact-info-box">
+                <h3>Questions About Our Therapists?</h3>
+                <p>All our therapists are highly trained, compassionate professionals. Your choice can depend on your preferences regarding experience level, specialization, or cost. We'll help match you with the right fit!</p>
+                <p>📞 Call us: <a href="tel:+18322422948">(832) 242-2948</a></p>
+                <p>Hours: Monday - Friday: 9:00am - 5:00pm</p>
+                <p>📍 Location: 950 Echo Lane Suite 200, Houston, Texas 77024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="schedule-session">
+        <div class="booking-container">
+            <h2>Schedule Your Session Today</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Take the first step toward healing and growth. Our team is ready to support you on your journey.</p>
+            
+            <!-- Embedded Calendar Booking -->
+            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden;">
+                <div style="background: linear-gradient(135deg, #0D7A9E 0%, #05525c 100%); color: white; padding: 25px; text-align: center;">
+                    <h3 style="margin: 0; font-size: 1.3rem;">📅 Book Your Therapy Session</h3>
+                    <p style="margin: 10px 0 0 0; opacity: 0.95; font-size: 0.95rem;">Select a date and time that works best for you (Houston, Texas Time - CST/CDT)</p>
+                </div>
+
+                <div style="padding: 40px; display: grid; grid-template-columns: 2.5fr 1fr; gap: 50px;">
+                    <!-- Left: Calendar & Times -->
+                    <div>
+                        <!-- Calendar -->
+                        <div style="margin-bottom: 40px;">
+                            <h4 style="color: #0D7A9E; font-size: 17px; font-weight: 600; margin-bottom: 15px;">Select a Date</h4>
+                            <div style="border: 1px solid #ddd; border-radius: 8px; padding: 25px; background: #fafafa; min-height: 500px;">
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
+
+                        <!-- Time Slots -->
+                        <div id="timeSlotSection" style="display: none;">
+                            <h4 style="color: #0D7A9E; font-size: 17px; font-weight: 600; margin-bottom: 15px;">Available Times</h4>
+                            <div id="timeSlots" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; max-height: 450px; overflow-y: auto; background: #fafafa;">
+                                <p style="color: #999; text-align: center;">Loading available times...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Booking Form -->
+                    <div>
+                        <h4 style="color: #0D7A9E; font-size: 16px; font-weight: 600; margin: 0 0 15px 0;">Your Information</h4>
+                        
+                        <div id="selectionMessage" style="padding: 12px; border-radius: 5px; margin-bottom: 15px; font-size: 13px; display: none;"></div>
+                        <div id="bookingMessage" style="padding: 12px; border-radius: 5px; margin-bottom: 15px; font-size: 13px; display: none;"></div>
+
+                        <div id="selectionSummary" style="background: #e8f4f8; padding: 12px; border-radius: 5px; margin-bottom: 15px; font-size: 13px; border-left: 4px solid #0D7A9E; display: none;">
+                            <strong style="display: block; color: #0D7A9E; margin-bottom: 5px;"></strong>
+                            <div id="selectionDetails"></div>
+                        </div>
+
+                        <form id="bookingForm" style="margin: 0;">
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #333; font-weight: 600; margin-bottom: 6px; font-size: 13px;">Full Name <span style="color: #dc3545;">*</span></label>
+                                <input type="text" id="fullName" placeholder="Your full name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; font-family: inherit;">
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #333; font-weight: 600; margin-bottom: 6px; font-size: 13px;">Email Address <span style="color: #dc3545;">*</span></label>
+                                <input type="email" id="email" placeholder="your@email.com" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; font-family: inherit;">
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #333; font-weight: 600; margin-bottom: 6px; font-size: 13px;">Phone Number <span style="color: #dc3545;">*</span></label>
+                                <input type="tel" id="phone" placeholder="(832) 000-0000" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; font-family: inherit;">
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #333; font-weight: 600; margin-bottom: 6px; font-size: 13px;">Service Type <span style="color: #dc3545;">*</span></label>
+                                <select id="service" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; font-family: inherit;">
+                                    <option value="">-- Select Service --</option>
+                                    <option value="Adult Counseling">Adult Counseling</option>
+                                    <option value="Child Counseling">Child Counseling</option>
+                                    <option value="Teen Counseling">Teen Counseling</option>
+                                    <option value="EMDR Therapy">EMDR Therapy</option>
+                                    <option value="Couples Counseling">Couples Counseling</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #333; font-weight: 600; margin-bottom: 6px; font-size: 13px;">Preferred Therapist (Optional)</label>
+                                <select id="therapist" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; font-family: inherit;">
+                                    <option value="">No preference</option>
+                                    <option value="Daymar Blanco-Gracia">Daymar Blanco-Gracia (LPC)</option>
+                                    <option value="Geraldine Blanco">Geraldine Blanco (LCSW)</option>
+                                    <option value="Grace Nguyen">Grace Nguyen (LPC-Associate)</option>
+                                    <option value="Samantha Wong">Samantha Wong (LPC-Associate)</option>
+                                    <option value="Vanessa Turcios">Vanessa Turcios (LPC-Associate)</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #333; font-weight: 600; margin-bottom: 6px; font-size: 13px;">Format <span style="color: #dc3545;">*</span></label>
+                                <select id="format" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; font-family: inherit;">
+                                    <option value="">-- Select Format --</option>
+                                    <option value="Virtual/Online">Virtual/Online</option>
+                                    <option value="In-Person">In-Person</option>
+                                    <option value="Either">Either is fine</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #333; font-weight: 600; margin-bottom: 6px; font-size: 13px;">Additional Notes</label>
+                                <textarea id="notes" rows="2" placeholder="Any additional information..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; font-family: inherit; resize: vertical;"></textarea>
+                            </div>
+
+                            <button type="submit" id="submitBtn" disabled style="width: 100%; padding: 12px; background: #ccc; color: white; border: none; border-radius: 5px; font-size: 14px; font-weight: 600; cursor: not-allowed; transition: background 0.3s, cursor 0.3s;">Complete Booking</button>
+                            <small style="display: block; text-align: center; color: #999; margin-top: 10px; font-size: 12px;">
+                                You will receive a confirmation email with your Google Meet link
+                            </small>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="color: #ffd700; margin-bottom: 1rem;">📍 Our Location</h4>
+                    <p>950 Echo Lane Suite 200</p>
+                    <p>Houston, Texas 77024</p>
+                    <p><a href="https://maps.google.com/maps?q=950+Echo+Lane,+Houston,+Texas+77024&z=15&mrt=loc" target="_blank" style="color: #ffd700; text-decoration: none;">📺 View on Google Maps</a></p>
+                </div>
+                <div>
+                    <h4 style="color: #ffd700; margin-bottom: 1rem;">📞 Contact Us</h4>
+                    <p>Phone: <a href="tel:+18322422948" style="color: #ffd700; text-decoration: none;">(832) 242-2948</a></p>
+                    <p>Hours: Monday - Friday: 9:00am - 5:00pm</p>
+                    <p>Saturday - Sunday: Closed</p>
+                </div>
+                <div>
+                    <h4 style="color: #ffd700; margin-bottom: 1rem;">🔗 Follow Us</h4>
+                    <p><a href="https://www.instagram.com/reyescollaborativecounseling/" target="_blank" style="color: #ffd700; text-decoration: none;">📷 Instagram</a></p>
+                    <p><a href="https://www.tiktok.com/@reyes.collaborati" target="_blank" style="color: #ffd700; text-decoration: none;">🎬 TikTok</a></p>
+                    <p><a href="https://pin.it/2t4VYgbHV" target="_blank" style="color: #ffd700; text-decoration: none;">📌 Pinterest</a></p>
+                </div>
+            </div>
+            <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 2rem 0;">
+            <p style="text-align: center; margin-bottom: 1rem;">&copy; 2026 Reyes Collaborative Counseling. All rights reserved. | <a href="https://reyescollaborativecounseling.com/privacy-policy" target="_blank" style="color: #ffd700; text-decoration: none;">Privacy Policy</a></p>
+            <p style="text-align: center; font-size: 0.85rem; color: #bbb;">Professional therapy and counseling services in Houston, Texas. Compassion. Collaboration. Healing.</p>
+            <p style="text-align: center; font-size: 0.85rem; color: #999; margin-top: 1rem;"><a href="/admin-login.html" style="color: #999; text-decoration: none;">🔐 Admin Portal</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.querySelector('.submit-btn');
+            const form = document.getElementById('bookingForm');
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                age: document.getElementById('age').value,
+                service: document.getElementById('service').value,
+                format: document.getElementById('format').value,
+                message: document.getElementById('message').value
+            };
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                // Call backend to send data to GoHighLevel
+                const response = await fetch('/api/submit-booking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = '✅ Thank you! We received your booking request. We\'ll contact you within 24 business hours to confirm your appointment. We\'re excited to support you on your healing journey!';
+                    form.reset();
+                    // Scroll to message
+                    formMessage.scrollIntoView({behavior: 'smooth', block: 'center'});
+                } else {
+                    throw new Error('Failed to submit form');
+                }
+            } catch (error) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = '❌ Error submitting form. Please try again or call us directly at (832) 242-2948.';
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Inquiry';
+            }
+        });
+    </script>
+
+    <script>
+        // Calendar Modal Variables
+        let selectedDate = null;
+        let selectedTime = null;
+        let calendar = null;
+
+        // Initialize calendar when modal loads
+        function initializeBookingCalendar() {
+            const calendarEl = document.getElementById('calendar');
+            if (!calendar && calendarEl) {
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: ''
+                    },
+                    validRange: {
+                        start: new Date().toISOString().split('T')[0]
+                    },
+                    dateClick: function(info) {
+                        // Remove previous selection
+                        document.querySelectorAll('.fc-daygrid-day.selected-date').forEach(el => {
+                            el.classList.remove('selected-date');
+                        });
+                        // Add selection to clicked date
+                        info.dayEl.classList.add('selected-date');
+                        // Select the date
+                        selectBookingDate(info.dateStr);
+                    }
+                });
+                calendar.render();
+            }
+        }
+
+        // Select booking date and load times
+        async function selectBookingDate(dateStr) {
+            selectedDate = dateStr;
+            selectedTime = null;
+
+            const timeSlotSection = document.getElementById('timeSlotSection');
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            
+            timeSlotSection.style.display = 'block';
+            timeSlotsContainer.innerHTML = '<p style="color: #0D7A9E; text-align: center; font-weight: 500;">⏳ Loading available times...</p>';
+
+            try {
+                const response = await fetch(`/api/bookings/available-slots?date=${dateStr}`);
+                const data = await response.json();
+
+                if (!data.available || data.slots.length === 0) {
+                    timeSlotsContainer.innerHTML = '<p style="color: #d00; text-align: center; font-weight: 500;">⚠️ No available times for this date. Please try another date.</p>';
+                    updateBookingSelection();
+                    return;
+                }
+
+                // Display time slots
+                timeSlotsContainer.innerHTML = data.slots.map(slot => `
+                    <button type="button" style="padding: 10px; margin-bottom: 8px; border: 2px solid #ddd; border-radius: 5px; text-align: center; cursor: pointer; transition: all 0.3s; font-weight: 500; width: 100%; background: white;" class="time-slot" data-time="${slot}">
+                        <span style="font-size: 12px; color: #999;">Time</span><br>
+                        <strong>${slot}</strong>
+                    </button>
+                `).join('');
+
+                // Add event listeners to time slot buttons
+                timeSlotsContainer.querySelectorAll('.time-slot').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        selectBookingTime(this.getAttribute('data-time'), this);
+                    });
+                });
+
+            } catch (error) {
+                console.error('Error loading time slots:', error);
+                timeSlotsContainer.innerHTML = '<p style="color: #d00; text-align: center; font-weight: 500;">❌ Error loading times. Please try again.</p>';
+            }
+
+            updateBookingSelection();
+        }
+
+        // Select booking time
+        function selectBookingTime(timeStr, buttonEl) {
+            selectedTime = timeStr;
+
+            // Update selected button
+            document.querySelectorAll('.time-slot').forEach(btn => {
+                btn.style.borderColor = '#ddd';
+                btn.style.background = 'white';
+                btn.style.color = 'black';
+            });
+            
+            // Highlight selected button
+            if (buttonEl) {
+                buttonEl.style.borderColor = '#0D7A9E';
+                buttonEl.style.background = '#0D7A9E';
+                buttonEl.style.color = 'white';
+            }
+
+            updateBookingSelection();
+        }
+
+        // Update booking selection summary
+        function updateBookingSelection() {
+            const summary = document.getElementById('selectionSummary');
+            const details = document.getElementById('selectionDetails');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (selectedDate && selectedTime) {
+                const dateObj = new Date(selectedDate + 'T' + selectedTime);
+                details.innerHTML = `
+                    <strong style="font-size: 14px;">✅ Selection Complete</strong>
+                    <div style="margin-top: 8px; line-height: 1.6;">
+                        📅 <strong>${dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</strong>
+                        <br>
+                        🕐 <strong>${selectedTime}</strong>
+                    </div>
+                `;
+                summary.style.display = 'block';
+                summary.querySelector('strong').textContent = '✅ Selection Complete';
+                submitBtn.disabled = false;
+                submitBtn.style.background = '#0D7A9E';
+                submitBtn.style.cursor = 'pointer';
+            } else if (selectedDate) {
+                const dateObj = new Date(selectedDate);
+                details.innerHTML = `
+                    <strong style="font-size: 14px;">📅 Date Selected</strong>
+                    <div style="margin-top: 8px;">
+                        ${dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                        <br>
+                        <small style="color: #666;">👇 Choose a time above</small>
+                    </div>
+                `;
+                summary.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.style.background = '#ccc';
+                submitBtn.style.cursor = 'not-allowed';
+            } else {
+                summary.style.display = 'none';
+                submitBtn.disabled = true;
+                submitBtn.style.background = '#ccc';
+                submitBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        // Handle booking form submission
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!selectedDate || !selectedTime) {
+                const msg = document.getElementById('bookingMessage');
+                msg.style.display = 'block';
+                msg.style.background = '#f8d7da';
+                msg.style.color = '#721c24';
+                msg.textContent = '❌ Please select a date and time';
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking...';
+
+            try {
+                const formData = {
+                    client_name: document.getElementById('fullName').value,
+                    client_email: document.getElementById('email').value,
+                    client_phone: document.getElementById('phone').value,
+                    service_type: document.getElementById('service').value,
+                    booking_date: selectedDate,
+                    booking_time: selectedTime,
+                    format: document.getElementById('format').value,
+                    notes: document.getElementById('notes').value,
+                    therapist: document.getElementById('therapist').value || null
+                };
+
+                const response = await fetch('/api/bookings/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || 'Booking failed');
+                }
+
+                const msg = document.getElementById('bookingMessage');
+                msg.style.display = 'block';
+                msg.style.background = '#d4edda';
+                msg.style.color = '#155724';
+                msg.innerHTML = `
+                    ✅ <strong>Booking Confirmed!</strong><br>
+                    A confirmation email with your Google Meet link has been sent to ${formData.client_email}<br>
+                    <small>You'll receive it shortly</small>
+                `;
+
+                document.getElementById('bookingForm').reset();
+                selectedDate = null;
+                selectedTime = null;
+                document.getElementById('timeSlotSection').style.display = 'none';
+                document.getElementById('selectionSummary').style.display = 'none';
+
+            } catch (error) {
+                const msg = document.getElementById('bookingMessage');
+                msg.style.display = 'block';
+                msg.style.background = '#f8d7da';
+                msg.style.color = '#721c24';
+                msg.textContent = `❌ ${error.message}`;
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Complete Booking';
+            }
+        });
+
+        // Initialize calendar on page load
+        window.addEventListener('load', function() {
+            initializeBookingCalendar();
+        });
+    </script>
+</html>

@@ -1,0 +1,43 @@
+# Secrets / environment
+.env
+.env.*
+*.env
+
+# Databases (may contain customer booking data)
+*.db
+*.sqlite
+*.sqlite3
+
+# Dependencies / virtualenvs
+node_modules/
+.venv/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Unrelated projects and content not part of the booking server
+App Dashboard Prototype/
+Legacy/
+Microsoft_Automation/
+ad-script-architect-starter/
+OutlookTest.md
+create-ai-video-intro-guide.txt
+daymar-landing.html
+email-template-updated.txt
+final_live_probe.md
+gohighlevel-automation-setup.txt
+team-video-script.txt
+video-script.txt
+CUSTOM_DOMAIN_SETUP.md
+N8N_QUICK_START.md
+N8N_SETUP_STATUS.txt
+N8N_WORKFLOW_CONFIG.md
+test-n8n-webhook.js
+
+# Contains real, live admin credentials in plaintext
+ADMIN_LOGIN_GUIDE.md

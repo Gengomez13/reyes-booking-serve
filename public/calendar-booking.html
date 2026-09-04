@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Session - Reyes Collaborative Counseling</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0D7A9E 0%, #05525c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .booking-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .booking-header {
+            background: linear-gradient(135deg, #0D7A9E 0%, #05525c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .booking-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .booking-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .booking-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .calendar-section {
+            display: grid;
+            gap: 20px;
+        }
+
+        .section-title {
+            color: #0D7A9E;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .calendar-wrapper {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        #calendar {
+            max-height: 500px;
+        }
+
+        .time-slots {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .time-slot {
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .time-slot:hover {
+            border-color: #0D7A9E;
+            background: #f0f7ff;
+        }
+
+        .time-slot.selected {
+            background: #0D7A9E;
+            color: white;
+            border-color: #0D7A9E;
+            font-weight: 600;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 122, 158, 0.3);
+        }
+
+        .time-slot:hover {
+            transform: translateY(-2px);
+        }
+
+        .time-slot.unavailable {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Calendar date styling */
+        .fc-daygrid-day {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .fc-daygrid-day:hover {
+            background-color: #f5f5f5 !important;
+            box-shadow: inset 0 0 8px rgba(13, 122, 158, 0.1);
+        }
+
+        .fc-daygrid-day.selected-date {
+            background-color: #0D7A9E !important;
+        }
+
+        .fc-daygrid-day.selected-date .fc-daygrid-day-number {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .fc-daygrid-day.selected-date .fc-daygrid-day-frame {
+            background-color: transparent;
+        }
+
+        .fc-daygrid-day-number {
+            padding: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .fc-button-primary:not(:disabled):hover {
+            background-color: #0D7A9E !important;
+            border-color: #0D7A9E !important;
+        }
+
+        .fc-button-primary:not(:disabled).fc-button-active {
+            background-color: #0D7A9E !important;
+            border-color: #0D7A9E !important;
+        }
+
+        .sidebar-form {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content;
+            border: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #0D7A9E;
+            box-shadow: 0 0 5px rgba(13, 122, 158, 0.2);
+        }
+
+        .booking-btn {
+            width: 100%;
+            padding: 12px;
+            background: #0D7A9E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .booking-btn:hover {
+            background: #05525c;
+        }
+
+        .booking-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            display: block;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #0D7A9E;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .selection-summary {
+            background: #e8f4f8;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-left: 4px solid #0D7A9E;
+        }
+
+        .selection-summary strong {
+            display: block;
+            color: #0D7A9E;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .booking-content {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Back to Landing Page</a>
+
+    <div class="booking-container">
+        <div class="booking-header">
+            <h1>📅 Book Your Therapy Session</h1>
+            <p>Select a date and time that works best for you (Houston, Texas Time - CST/CDT)</p>
+        </div>
+
+        <div class="booking-content">
+            <div class="calendar-section">
+                <!-- Calendar -->
+                <div>
+                    <h3 class="section-title">Select a Date</h3>
+                    <div class="calendar-wrapper">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+
+                <!-- Time Slots -->
+                <div id="timeSlotSection" style="display: none;">
+                    <h3 class="section-title">Available Times</h3>
+                    <div id="timeSlots" class="time-slots">
+                        <p style="color: #999; text-align: center;">Loading available times...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="sidebar-form">
+                <h3 class="section-title" style="margin-top: 0;">Your Information</h3>
+                
+                <div id="selectionMessage" class="message"></div>
+                <div id="bookingMessage" class="message"></div>
+
+                <div class="selection-summary" id="selectionSummary" style="display: none;">
+                    <strong>📍 Selected</strong>
+                    <div id="selectionDetails"></div>
+                </div>
+
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="(832) 000-0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Type <span class="required">*</span></label>
+                        <select id="service" name="service" required>
+                            <option value="">-- Select Service --</option>
+                            <option value="Adult Counseling">Adult Counseling</option>
+                            <option value="Child Counseling">Child Counseling</option>
+                            <option value="Teen Counseling">Teen Counseling</option>
+                            <option value="EMDR Therapy">EMDR Therapy</option>
+                            <option value="Couples Counseling">Couples Counseling</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="format">Format <span class="required">*</span></label>
+                        <select id="format" name="format" required>
+                            <option value="">-- Select Format --</option>
+                            <option value="Virtual/Online">Virtual/Online</option>
+                            <option value="In-Person">In-Person</option>
+                            <option value="Either">Either is fine</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any additional information or concerns..."></textarea>
+                    </div>
+
+                    <button type="submit" class="booking-btn" id="submitBtn" disabled>Complete Booking</button>
+                    <small style="display: block; text-align: center; color: #999; margin-top: 10px;">
+                        You will receive a confirmation email with your Google Meet link
+                    </small>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedDate = null;
+        let selectedTime = null;
+        let calendar;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCalendar();
+        });
+
+        function initializeCalendar() {
+            const calendarEl = document.getElementById('calendar');
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: ''
+                },
+                validRange: {
+                    start: new Date().toISOString().split('T')[0]
+                },
+                dateClick: function(info) {
+                    // Remove previous selection
+                    document.querySelectorAll('.fc-daygrid-day.selected-date').forEach(el => {
+                        el.classList.remove('selected-date');
+                    });
+                    // Add selection to clicked date
+                    info.dayEl.classList.add('selected-date');
+                    // Select the date
+                    selectDate(info.dateStr);
+                },
+                datesSet: function(dateInfo) {
+                    // Highlight unavailable dates (you can enhance this with backend data)
+                },
+                dayCellDidMount: function(info) {
+                    // Make dates look clickable
+                    info.el.style.position = 'relative';
+                }
+            });
+            calendar.render();
+        }
+
+        async function selectDate(dateStr) {
+            selectedDate = dateStr;
+            selectedTime = null;
+
+            const timeSlotSection = document.getElementById('timeSlotSection');
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            
+            // Show loading state
+            timeSlotSection.style.display = 'block';
+            timeSlotsContainer.innerHTML = '<p style="color: #0D7A9E; text-align: center; font-weight: 500;">⏳ Loading available times...</p>';
+
+            try {
+                const response = await fetch(`/api/bookings/available-slots?date=${dateStr}`);
+                const data = await response.json();
+
+                if (!data.available || data.slots.length === 0) {
+                    timeSlotsContainer.innerHTML = '<p style="color: #d00; text-align: center; font-weight: 500;">⚠️ No available times for this date. Please try another date.</p>';
+                    updateSelection();
+                    return;
+                }
+
+                // Display time slots with better styling
+                timeSlotsContainer.innerHTML = data.slots.map((slot, index) => `
+                    <button type="button" class="time-slot" onclick="selectTime('${slot}')">
+                        <span style="font-size: 12px; color: #999;">Time</span><br>
+                        <strong>${slot}</strong>
+                    </button>
+                `).join('');
+
+            } catch (error) {
+                console.error('Error loading time slots:', error);
+                timeSlotsContainer.innerHTML = '<p style="color: #d00; text-align: center; font-weight: 500;">❌ Error loading times. Please try again.</p>';
+            }
+
+            updateSelection();
+        }
+
+        function selectTime(timeStr) {
+            selectedTime = timeStr;
+
+            // Update selected button
+            document.querySelectorAll('.time-slot').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+
+            updateSelection();
+        }
+
+        function updateSelection() {
+            const summary = document.getElementById('selectionSummary');
+            const details = document.getElementById('selectionDetails');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (selectedDate && selectedTime) {
+                const dateObj = new Date(selectedDate + 'T' + selectedTime);
+                details.innerHTML = `
+                    <strong style="font-size: 14px;">✅ Selection Complete</strong>
+                    <div style="margin-top: 8px; line-height: 1.6;">
+                        📅 <strong>${dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</strong>
+                        <br>
+                        🕐 <strong>${selectedTime}</strong>
+                    </div>
+                `;
+                summary.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.style.background = '#0D7A9E';
+            } else if (selectedDate) {
+                const dateObj = new Date(selectedDate);
+                details.innerHTML = `
+                    <strong style="font-size: 14px;">📅 Date Selected</strong>
+                    <div style="margin-top: 8px;">
+                        ${dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                        <br>
+                        <small style="color: #666;">👇 Choose a time below</small>
+                    </div>
+                `;
+                summary.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.style.background = '#ccc';
+            } else {
+                summary.style.display = 'none';
+                submitBtn.disabled = true;
+                submitBtn.style.background = '#ccc';
+            }
+        }
+
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!selectedDate || !selectedTime) {
+                const msg = document.getElementById('selectionMessage');
+                msg.className = 'message error';
+                msg.textContent = '❌ Please select a date and time';
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking...';
+
+            try {
+                const formData = {
+                    client_name: document.getElementById('fullName').value,
+                    client_email: document.getElementById('email').value,
+                    client_phone: document.getElementById('phone').value,
+                    service_type: document.getElementById('service').value,
+                    booking_date: selectedDate,
+                    booking_time: selectedTime,
+                    format: document.getElementById('format').value,
+                    notes: document.getElementById('notes').value,
+                    therapist: null
+                };
+
+                const response = await fetch('/api/bookings/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || 'Booking failed');
+                }
+
+                const msg = document.getElementById('bookingMessage');
+                msg.className = 'message success';
+                msg.innerHTML = `
+                    ✅ <strong>Booking Confirmed!</strong><br>
+                    A confirmation email with your Google Meet link has been sent to ${formData.client_email}<br>
+                    <small>You'll receive it shortly</small>
+                `;
+
+                document.getElementById('bookingForm').reset();
+                selectedDate = null;
+                selectedTime = null;
+                document.getElementById('timeSlotSection').style.display = 'none';
+                document.getElementById('selectionSummary').style.display = 'none';
+
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 3000);
+
+            } catch (error) {
+                const msg = document.getElementById('bookingMessage');
+                msg.className = 'message error';
+                msg.textContent = `❌ ${error.message}`;
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Complete Booking';
+            }
+        });
+    </script>
+</body>
+</html>
