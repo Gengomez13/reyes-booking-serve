@@ -540,15 +540,22 @@
     </div>
 
     <script>
-        const TOKEN = localStorage.getItem('adminToken');
-        const USER = JSON.parse(localStorage.getItem('adminUser'));
+        let TOKEN = localStorage.getItem('adminToken');
+        let USER = null;
+        try {
+            USER = JSON.parse(localStorage.getItem('adminUser'));
+        } catch (error) {
+            console.error('Stored adminUser was not valid JSON, clearing it:', error);
+        }
 
         // Check authentication
         if (!TOKEN || !USER) {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminUser');
             window.location.href = '/admin-login.html';
+        } else {
+            document.getElementById('userName').textContent = USER.name || USER.email;
         }
-
-        document.getElementById('userName').textContent = USER.name || USER.email;
 
         // Initialize calendar
         let calendar;
