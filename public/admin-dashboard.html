@@ -553,48 +553,52 @@
         // Initialize calendar
         let calendar;
         document.addEventListener('DOMContentLoaded', function() {
-            const calendarEl = document.getElementById('calendar');
-            calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek'
-                },
-                events: async function(info) {
-                    try {
-                        const response = await fetch('/api/admin/bookings', {
-                            headers: { 'Authorization': `Bearer ${TOKEN}` }
+            try {
+                const calendarEl = document.getElementById('calendar');
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek'
+                    },
+                    events: async function(info) {
+                        try {
+                            const response = await fetch('/api/admin/bookings', {
+                                headers: { 'Authorization': `Bearer ${TOKEN}` }
+                            });
+                            const bookings = await response.json();
+
+                            return bookings.map(booking => ({
+                                id: booking.id,
+                                title: `${booking.client_name} - ${booking.service_type}`,
+                                start: `${booking.booking_date}T${booking.booking_time}`,
+                                backgroundColor: '#0D7A9E',
+                                borderColor: '#05525c'
+                            }));
+                        } catch (error) {
+                            console.error('Error loading calendar events:', error);
+                            return [];
+                        }
+                    },
+                    dateClick: function(info) {
+                        // Remove previous selection
+                        document.querySelectorAll('.fc-daygrid-day').forEach(el => {
+                            el.classList.remove('selected-date');
                         });
-                        const bookings = await response.json();
-                        
-                        return bookings.map(booking => ({
-                            id: booking.id,
-                            title: `${booking.client_name} - ${booking.service_type}`,
-                            start: `${booking.booking_date}T${booking.booking_time}`,
-                            backgroundColor: '#0D7A9E',
-                            borderColor: '#05525c'
-                        }));
-                    } catch (error) {
-                        console.error('Error loading calendar events:', error);
-                        return [];
+
+                        // Add selection to clicked date
+                        info.dayEl.classList.add('selected-date');
+
+                        // Update block date input
+                        document.getElementById('blockDate').value = info.dateStr;
                     }
-                },
-                dateClick: function(info) {
-                    // Remove previous selection
-                    document.querySelectorAll('.fc-daygrid-day').forEach(el => {
-                        el.classList.remove('selected-date');
-                    });
-                    
-                    // Add selection to clicked date
-                    info.dayEl.classList.add('selected-date');
-                    
-                    // Update block date input
-                    document.getElementById('blockDate').value = info.dateStr;
-                }
-            });
-            calendar.render();
-            
+                });
+                calendar.render();
+            } catch (error) {
+                console.error('Error initializing calendar:', error);
+            }
+
             loadBookings();
             loadBlockedDates();
         });
@@ -646,6 +650,9 @@
                     </tr>
                 `).join('');
             } catch (error) {
+                console.error('Error loading bookings:', error);
+                document.getElementById('bookingsBody').innerHTML =
+                    '<tr><td colspan="11" style="text-align: center; color: #c0392b;">Failed to load bookings — see console for details</td></tr>';
                 const bookingsMsg = document.getElementById('bookingsMessage');
                 bookingsMsg.className = 'message error';
                 bookingsMsg.textContent = '❌ Error loading bookings';
