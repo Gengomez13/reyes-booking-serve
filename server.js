@@ -3,7 +3,7 @@ const axios = require('axios');
 const cors = require('cors');
 const path = require('path');
 const db = require('./database');
-const { registerUser, loginUser, authMiddleware, adminMiddleware } = require('./auth');
+const { registerUser, loginUser, resetPassword, authMiddleware, adminMiddleware } = require('./auth');
 const { sendBookingConfirmation, sendAdminNotification: sendEmailNotification } = require('./email');
 const { createCalendarEvent, sendClientConfirmation, sendAdminNotification } = require('./calendar');
 require('dotenv').config();
@@ -187,6 +187,28 @@ app.post('/api/auth/register', async (req, res) => {
         });
     } catch (error) {
         console.error('Registration error:', error);
+        res.status(400).json({ error: error.message });
+    }
+});
+
+// TEMPORARY: one-off password reset, gated by the same admin token as registration.
+// Remove after use.
+app.post('/api/auth/reset-password-temp', async (req, res) => {
+    try {
+        const adminToken = req.headers['x-admin-token'];
+        if (adminToken !== process.env.ADMIN_REGISTRATION_TOKEN) {
+            return res.status(403).json({ error: 'Not authorized' });
+        }
+
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ error: 'Email and password required' });
+        }
+
+        await resetPassword(email, password);
+        res.json({ success: true, message: 'Password reset' });
+    } catch (error) {
+        console.error('Password reset error:', error);
         res.status(400).json({ error: error.message });
     }
 });

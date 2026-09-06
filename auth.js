@@ -68,6 +68,26 @@ function loginUser(email, password) {
     });
 }
 
+// Reset a user's password (used by the temporary admin password-reset endpoint)
+function resetPassword(email, newPassword) {
+    return new Promise((resolve, reject) => {
+        const hashedPassword = bcrypt.hashSync(newPassword, 10);
+        db.run(
+            'UPDATE users SET password_hash = ? WHERE email = ?',
+            [hashedPassword, email],
+            function (err) {
+                if (err) {
+                    reject(err);
+                } else if (this.changes === 0) {
+                    reject(new Error('User not found'));
+                } else {
+                    resolve({ changes: this.changes });
+                }
+            }
+        );
+    });
+}
+
 // Verify token
 function verifyToken(token) {
     try {
@@ -105,6 +125,7 @@ function adminMiddleware(req, res, next) {
 module.exports = {
     registerUser,
     loginUser,
+    resetPassword,
     verifyToken,
     authMiddleware,
     adminMiddleware
