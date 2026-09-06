@@ -8,6 +8,20 @@ const { sendBookingConfirmation, sendAdminNotification: sendEmailNotification } 
 const { createCalendarEvent, sendClientConfirmation, sendAdminNotification } = require('./calendar');
 require('dotenv').config();
 
+// TEMPORARY diagnostic: confirms what ADMIN_REGISTRATION_TOKEN Render actually loaded,
+// without ever logging the secret itself. Remove once the mismatch is resolved.
+(() => {
+    const crypto = require('crypto');
+    const t = process.env.ADMIN_REGISTRATION_TOKEN;
+    if (!t) {
+        console.log('[diagnostic] ADMIN_REGISTRATION_TOKEN: NOT SET');
+    } else {
+        console.log(
+            `[diagnostic] ADMIN_REGISTRATION_TOKEN: length=${t.length} sha256_8=${crypto.createHash('sha256').update(t).digest('hex').slice(0, 8)}`
+        );
+    }
+})();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
