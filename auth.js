@@ -15,7 +15,7 @@ function registerUser(email, password, name, role = 'client') {
         const hashedPassword = bcrypt.hashSync(password, 10);
 
         db.run(
-            'INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?)',
+            'INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?) RETURNING id',
             [email, hashedPassword, name, role],
             function (err) {
                 if (err) {

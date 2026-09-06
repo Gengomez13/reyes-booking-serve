@@ -295,7 +295,7 @@ app.post('/api/bookings/create', async (req, res) => {
         db.get('SELECT id FROM users WHERE email = ?', [client_email], (err, user) => {
             if (!user) {
                 db.run(
-                    'INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?)',
+                    'INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?) RETURNING id',
                     [client_email, '', client_name, 'client'],
                     function (err) {
                         if (err) {
@@ -314,7 +314,7 @@ app.post('/api/bookings/create', async (req, res) => {
         function completeBooking(clientId) {
             db.run(
                 `INSERT INTO bookings (client_id, client_name, client_email, client_phone, service_type, booking_date, booking_time, therapist, format, notes, status)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'confirmed')`,
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'confirmed') RETURNING id`,
                 [clientId, client_name, client_email, client_phone, service_type, booking_date, booking_time, therapist, format, notes],
                 async function (err) {
                     if (err) {
@@ -538,7 +538,8 @@ app.post('/api/admin/block-date', authMiddleware, adminMiddleware, (req, res) =>
         }
 
         db.run(
-            'INSERT OR REPLACE INTO blocked_dates (blocked_date, reason, blocked_by) VALUES (?, ?, ?)',
+            `INSERT INTO blocked_dates (blocked_date, reason, blocked_by) VALUES (?, ?, ?)
+             ON CONFLICT (blocked_date) DO UPDATE SET reason = EXCLUDED.reason, blocked_by = EXCLUDED.blocked_by`,
             [date, reason, req.user.id],
             function (err) {
                 if (err) {
