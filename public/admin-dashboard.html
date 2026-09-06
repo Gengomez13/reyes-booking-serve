@@ -711,7 +711,7 @@
                 const response = await fetch(`/api/admin/bookings/${id}`, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `****** `,
+                        'Authorization': `Bearer ${TOKEN}`,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(updatedBooking)
@@ -736,7 +736,7 @@
             try {
                 const response = await fetch(`/api/admin/bookings/${bookingId}`, {
                     method: 'DELETE',
-                    headers: { 'Authorization': `****** }
+                    headers: { 'Authorization': `Bearer ${TOKEN}` }
                 });
 
                 if (!response.ok) throw new Error('Failed to delete booking');
